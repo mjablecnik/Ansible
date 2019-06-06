@@ -1,0 +1,17 @@
+[martin:children]
+develop
+production
+
+
+[develop]
+test1 fqdn="test1" 
+
+
+[production]
+test1 fqdn="test1" 
+
+
+[martin:vars]
+ansible_user=martin
+
+

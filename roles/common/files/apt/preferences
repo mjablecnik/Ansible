@@ -1,0 +1,7 @@
+Package: openjdk*
+Pin: origin ""
+Pin-Priority: -1
+
+Package: docker-ce*
+Pin: origin ""
+Pin-Priority: -1

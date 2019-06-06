@@ -1,0 +1,7 @@
+- hosts: develop
+  remote_user: martin
+  become: yes
+  gather_facts: false
+  roles:
+  - { role: common, tags: common }
+  - { role: docker, tags: docker }

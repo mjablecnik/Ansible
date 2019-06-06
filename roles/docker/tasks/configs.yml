@@ -1,0 +1,36 @@
+- name: Create docker directory
+  file:
+    path: /root/.docker
+    state: directory
+    mode: 0600
+
+- template:
+    src: daemon.json
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: 0600
+  notify: reload docker
+
+- copy:
+    src: docker.service
+    dest: /lib/systemd/system/docker.service
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart docker
+
+  #- template:
+  #    src: config.json
+  #    dest: /root/.docker/config.json
+  #    owner: root
+  #    group: root
+  #    mode: 0600
+
+- file:
+    path: /var/run/docker.sock
+    owner: root
+    group: docker
+    mode: 0666
+
+

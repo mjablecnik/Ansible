@@ -1,0 +1,38 @@
+- name: Install python software properties 
+  apt: name={{ item }} update_cache=yes
+  with_items:
+    - software-properties-common
+    - python3-setuptools
+      #    - python-pip
+    
+
+- name: Install pip3
+  easy_install:
+    name: pip
+    state: latest
+    executable: easy_install3
+
+
+- name: Install important packages
+  apt: name={{ item }} update_cache=yes
+  with_items:
+    - vim
+    - zsh
+    - git
+    - tmux
+    - rsync
+
+  
+- name: Install build tools
+  apt: name={{ item }} update_cache=yes
+  with_items:
+    - make
+    - gcc
+    - build-essential
+
+
+- name: Install apt packages
+  apt: name={{ item }} update_cache=yes state=present
+  with_items: 
+    - "{{ apt_packages }}"
+

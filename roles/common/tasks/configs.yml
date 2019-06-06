@@ -1,0 +1,58 @@
+  #- name: Copy hosts
+  #  template: src=hosts dest=/etc/hosts
+  
+
+- name: Copy tmux plugins
+  unarchive:
+    src: tmux.tgz
+    dest: /root/
+  tags: tmux
+
+
+- name: Copy tmux config
+  copy: src=tmux.conf dest=/root/.tmux.conf force=true
+  tags: tmux
+
+
+- name: Copy vim config
+  copy: src=vimrc dest=/root/.vimrc force=true
+  tags: vim
+
+- name: Creates directory
+  file: path=/root/vim_auto_backups/ state=directory 
+  tags: vim
+
+- name: Copy zsh config
+  copy: src=zshrc dest=/root/.zshrc force=true
+  tags: zsh
+
+- name: Copy zsh config for Martin
+  copy: src=zshrc dest=/home/martin/.zshrc force=true owner=martin
+  tags: zsh
+
+- name: Set ZSH as default shell
+  shell: chsh -s /usr/bin/zsh root
+  tags: zsh
+
+
+- name: Create upstart service
+  copy: 
+    src: upstart.service
+    dest: /lib/systemd/system/upstart.service 
+  notify: enable upstart
+  tags: upstart
+
+
+- name: Copy upstart script
+  copy: src=upstart.sh dest=/etc/upstart mode=755
+  tags: upstart
+
+
+- name: copy /etc/sysctl.conf
+  copy:
+    src=sysctl.conf
+    dest=/etc/sysctl.conf
+  register:
+    sysctlfile
+
+

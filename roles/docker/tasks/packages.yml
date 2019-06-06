@@ -1,0 +1,50 @@
+- name: Install docker dependencies
+  apt: name={{ item }} update_cache=yes
+  with_items:
+      - apt-transport-https 
+      - ca-certificates 
+      - curl 
+      - gnupg2 
+      - software-properties-common
+      - python3-setuptools
+
+- name: Install setuptools packages
+  pip: name="setuptools=={{ setuptools_version }}" executable=pip3
+
+- name: Remove python3-pip
+  apt: name=pip3-python update_cache=no state=absent
+
+
+- name: Add official GPG key
+  shell: curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+  #- apt_repository:
+  #    repo: deb http://archive.canonical.com/ubuntu hardy partner
+  #    state: present
+
+- name: Add repository
+  shell: 'sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"'
+
+- name: Install docker-ce
+  apt: name="docker-ce={{ docker_version }}" update_cache=yes
+
+
+- name: Remove docker-py
+  pip: name={{ item }} executable=pip3 state=absent
+  with_items:
+      - "docker-py"
+      - "docker"
+      - "docker-compose"
+
+- name: Install docker pip packages
+  pip: name={{ item }} executable=pip3
+  with_items:
+      - "docker"
+
+- name: Install docker-compose
+  get_url:
+    url: "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-Linux-x86_64"
+    dest: /usr/bin/docker-compose
+    mode: 0755
+
+- name: Disable upgrade 
+  shell: 'sudo apt-mark hold docker-ce'

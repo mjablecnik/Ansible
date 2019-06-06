@@ -1,0 +1,7 @@
+{
+	"auths": {
+		"docker.drakeman.cz": {                                                                                                                                                                            
+			"auth": "{{ docker_auth_token }}"
+		}
+	}
+}

@@ -1,0 +1,6 @@
+- include: packages.yml 
+  tags: docker_packages
+  
+- include: configs.yml 
+  tags: docker_configs 
+

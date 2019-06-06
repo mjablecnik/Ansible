@@ -1,0 +1,9 @@
+- include: packages.yml 
+  tags: common_packages
+  
+- include: configs.yml 
+  tags: common_configs
+
+
+- include: iptables.yml
+  tags: iptables

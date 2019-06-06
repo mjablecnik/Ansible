@@ -1,0 +1,17 @@
+- name: enable upstart
+  service: name=upstart enabled=True daemon_reload=yes
+
+- name: reload tmux config
+  shell: tmux source-file ~/.tmux.conf
+  ignore_errors: True 
+
+  #- name: restart supervisor
+  #  service: name=supervisor state=restarted
+  #  when: no_restart is not defined
+
+  #- name: update supervisor
+  #  shell: supervisorctl reread && supervisorctl update
+
+- name: reload sysctl
+  command: sysctl -p
+  when: sysctlfile | changed
