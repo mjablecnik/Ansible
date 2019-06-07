@@ -5,6 +5,8 @@ production
 
 [develop]
 test1 fqdn="test1" 
+test2 fqdn="test2" 
+test3 fqdn="test3" 
 
 
 [production]
