@@ -6,7 +6,8 @@
 
 
 - name: setting nftables
-  copy: src=nftables.conf
-    dest=/etc/nftables.conf
-    owner=0 group=0 mode=755
+  copy: 
+    src: nftables.conf
+    dest: /etc/nftables.conf
+    mode: 755
 

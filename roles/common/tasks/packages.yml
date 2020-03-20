@@ -16,8 +16,8 @@
     update_cache: yes
 
 
-- name: Install apt packages
+- name: Install other apt packages
   apt: 
-    name: [ 'sudo', 'openvpn', 'htop' ]
+    name: [ 'sudo', 'openvpn', 'htop', 'nmap', 'wget', 'curl', 'telnet' ]
     update_cache: yes
 
