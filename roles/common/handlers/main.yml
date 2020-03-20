@@ -1,6 +1,9 @@
 - name: enable upstart
   service: name=upstart enabled=True daemon_reload=yes
 
+- name: enable nftables
+  service: name=nftables enabled=True daemon_reload=yes
+
 - name: reload tmux config
   shell: tmux source-file ~/.tmux.conf
   ignore_errors: True 

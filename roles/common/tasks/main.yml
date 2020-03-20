@@ -4,6 +4,8 @@
 - include: configs.yml 
   tags: common_configs
 
+- include: nftables.yml
+  tags: nftables
 
-- include: iptables.yml
-  tags: iptables
+#- include: iptables.yml
+#  tags: iptables

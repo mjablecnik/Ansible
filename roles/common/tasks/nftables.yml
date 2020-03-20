@@ -1,0 +1,12 @@
+- name: Install nftables 
+  apt: 
+    name: ['nftables']
+    update_cache: yes
+  notify: enable nftables
+
+
+- name: setting nftables
+  copy: src=nftables.conf
+    dest=/etc/nftables.conf
+    owner=0 group=0 mode=755
+
