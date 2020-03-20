@@ -1,16 +1,11 @@
 
 
-# Packages:
-apt_packages: [ 'sudo', 'openvpn', 'htop' ] 
-#python_packages: [] 
-
-
 # Package versions:
-setuptools_version: "33.1.1"
-docker_version: "18.06.3~ce~3-0~debian"
 docker_compose_version: "1.23.2"
 docker_auth_token: ""
+debian_version_code: "buster"
 
+ansible_python_interpreter: "/usr/bin/python3"
 
 
 

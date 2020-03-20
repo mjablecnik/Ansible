@@ -4,9 +4,9 @@ production
 
 
 [develop]
-test1 fqdn="test1" 
-test2 fqdn="test2" 
-test3 fqdn="test3" 
+dirt1 fqdn="dirt1" 
+#test2 fqdn="test2" 
+#test3 fqdn="test3" 
 
 
 [production]
