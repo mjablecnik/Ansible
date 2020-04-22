@@ -1,6 +1,20 @@
-- hosts: develop
+- hosts: test
   remote_user: martin
   become: yes
+  gather_facts: false
+  roles:
+  - { role: common, tags: common }
+  - { role: docker, tags: docker }
+
+- hosts: develop
+  remote_user: root
+  gather_facts: false
+  roles:
+  - { role: common, tags: common }
+  - { role: docker, tags: docker }
+
+- hosts: production
+  remote_user: root
   gather_facts: false
   roles:
   - { role: common, tags: common }

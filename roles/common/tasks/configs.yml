@@ -26,8 +26,8 @@
   copy: src=zshrc dest=/root/.zshrc force=true
   tags: zsh
 
-- name: Copy zsh config for Martin
-  copy: src=zshrc dest=/home/martin/.zshrc force=true owner=martin
+- name: Copy zsh config for Debian user
+  copy: src=zshrc dest=/home/debian/.zshrc force=true owner=debian
   tags: zsh
 
 - name: Set ZSH as default shell

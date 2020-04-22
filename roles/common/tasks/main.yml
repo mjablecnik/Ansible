@@ -1,11 +1,14 @@
+- hostname:
+    name: "{{ fqdn }}"
+
 - include: packages.yml 
   tags: common_packages
   
 - include: configs.yml 
   tags: common_configs
 
-- include: nftables.yml
-  tags: nftables
+#- include: nftables.yml
+#  tags: nftables
 
-#- include: iptables.yml
-#  tags: iptables
+- include: iptables.yml
+  tags: iptables
