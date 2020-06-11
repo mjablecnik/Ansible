@@ -6,7 +6,7 @@
 
 - name: Install important packages
   apt: 
-    name: ['vim', 'zsh', 'git', 'tmux', 'rsync']
+    name: ['vim', 'zsh', 'git', 'tmux', 'rsync', 'xsel']
     update_cache: yes
 
   
