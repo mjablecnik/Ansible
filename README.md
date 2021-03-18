@@ -17,15 +17,33 @@
 
 
 ### Run playbook:
-For selected hosts, use `-l` argument
-For tag, use `-t` argument
+For select hosts, use `-l` or `--limit` argument
+For tag, use `-t` or `--tag` argument
 Parameter: `-e 'ansible_python_interpreter=/usr/bin/python'` choose your interpreter running on host
+Example:
 ```
 ansible-playbook -v common.yml -l test1 -t example-tag -i hosts
 ```
 
-##### Run playbook with `--check` argument for run playbook without changes:
+##### If you don't make any changes, use`--check` argument:
 
-  `ansible-playbook database.yml --check --limit slaves`
+  `ansible-playbook database.yml --limit slaves --check`
 
+##### If you don't make any changes and you want to see every differences of possible changes use `--diff` argument:
+
+  `ansible-playbook database.yml --limit slaves --check --diff`
+
+
+
+### First server setup advice:
+On the server setup your public ssh and install `python3-apt` 
+
+then run:
+ansible-playbook -v common.yml -t common -i /etc/ansible/hosts --limit ovh-vps --check
+and
+ansible-playbook -v common.yml -t docker -i /etc/ansible/hosts --limit ovh-vps --check
+
+and if all is ok so then run it without --check
+
+test if you can connect again with ssh and then reboot server
 
