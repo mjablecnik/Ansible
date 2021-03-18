@@ -19,3 +19,11 @@
   roles:
   - { role: common, tags: common }
   - { role: docker, tags: docker }
+
+- hosts: ovh-vps
+  remote_user: debian
+  become: yes
+  gather_facts: false
+  roles:
+  - { role: common, tags: common }
+  - { role: docker, tags: docker }
